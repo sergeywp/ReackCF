@@ -1,0 +1,55 @@
+ID: uiFameworksJs
+_schema-version: '2.1'
+version: 0.0.2
+modules:
+  - name: dbUiFrameworks
+    type: hdb
+    path: dbUiFrameworks
+    requires:
+      - name: hdi_dbUiFrameworks
+  - name: jsUiFrameworks
+    type: nodejs
+    path: jsUiFrameworks
+    provides:
+      - name: jsUiFrameworks_api
+        properties:
+          url: '${default-url}'
+    requires:
+      - name: hdi_dbUiFrameworks
+      - name: dbUiFrameworks
+  - name: reactUiFrameworks
+    type: html5
+    path: reactUiFrameworks
+    parameters:
+      disk-quota: 256M
+      memory: 256M
+    build-parameters:
+      builder: grunt
+    requires:
+      - name: uaa_uiFameworksJs
+      - name: dest_uiFameworksJs
+      - name: jsUiFrameworks_api
+        group: destinations
+        properties:
+          url: '~{url}'
+          name: core-backend
+          forwardAuthToken: true
+resources:
+  - name: hdi_dbUiFrameworks
+    parameters:
+      config:
+        schema: UI_FRMWKS
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container
+  - name: uaa_uiFameworksJs
+    parameters:
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa
+    type: org.cloudfoundry.managed-service
+  - name: dest_uiFameworksJs
+    parameters:
+      service-plan: lite
+      service: destination
+    type: org.cloudfoundry.managed-service

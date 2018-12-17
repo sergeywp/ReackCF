@@ -1,0 +1,24 @@
+{
+  "welcomeFile": "/reactUiFrameworks/index.html",
+  "authenticationMethod": "none",
+  "logout": {
+    "logoutEndpoint": "/do/logout"
+  },
+  "routes": [
+    {
+      "source": "^/reactUiFrameworks/(.*)$",
+      "target": "$1",
+      "localDir": "webapp"
+    },
+  	{
+		"source": "(.*)(.xsjs)",
+		"destination": "core-backend",
+		"csrfProtection": false,
+		"authenticationType": "xsuaa"
+	},{
+		"source": "(.*)(.xsodata)",
+		"destination": "core-backend",
+		"authenticationType": "xsuaa"
+	}
+  ]
+}

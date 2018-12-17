@@ -1,0 +1,54 @@
+{
+	"format_version": 1,
+	"imports" : [{
+		"target_table": "uiFameworksJs.dbUiFrameworks::tables.firstDbTable",
+		"source_data": {
+			"data_type": "CSV",
+			"file_name": "uiFameworksJs.dbUiFrameworks::firstTable.csv",
+			"has_header": true,
+			"dialect": "HANA",
+			"type_confing": {
+				"delimiter": ","
+			}
+		},
+		"import_setting": {
+			"import_columns": [
+				"state",
+				"detalNum",
+				"height",
+				"step",
+				"kone",
+				"angel"
+			]
+		},
+		"columm_mappings": {
+				"state": 1,
+				"detalNum": 2,
+				"height": 3,
+				"step": 4,
+				"kone": 5,
+				"angel": 6
+		}
+	},{
+		"target_table": "uiFameworksJs.dbUiFrameworks::tables.secondDbTable",
+		"source_data": {
+			"data_type": "CSV",
+			"file_name": "uiFameworksJs.dbUiFrameworks::secondTable.csv",
+			"has_header": true,
+			"dialect": "HANA",
+			"type_confing": {
+				"delimiter": ","
+			}
+		},
+		"import_setting": {
+			"import_columns": [
+				"state",
+				"substate"
+			]
+		},
+		"columm_mappings": {
+				"state": 1,
+				"substate": 2
+		}
+	}]
+}

@@ -1,0 +1,16 @@
+namespace uiFameworksJs.dbUiFrameworks;
+
+context tables {
+	entity firstDbTable {
+		state: String(15);
+		detalNum: Integer;
+		height: String(10);
+		step: String(10);
+		kone: String(10);
+		angel: String(10);	
+	}
+	entity secondDbTable{
+		state: String(15);
+		substate: String(15);
+	}
+};

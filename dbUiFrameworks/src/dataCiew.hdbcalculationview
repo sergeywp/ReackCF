@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="uiFameworksJs.dbUiFrameworks::dataCiew" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="HOURLY" enforceSqlExecution="false">
+<descriptions defaultDescription="dataCiew"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="uiFameworksJs.dbUiFrameworks::tables.firstDbTable">
+    <resourceUri>uiFameworksJs.dbUiFrameworks::tables.firstDbTable</resourceUri>
+  </DataSource>
+  <DataSource id="uiFameworksJs.dbUiFrameworks::tables.secondDbTable">
+    <resourceUri>uiFameworksJs.dbUiFrameworks::tables.secondDbTable</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="state">
+        <descriptions defaultDescription="state"/>
+      </viewAttribute>
+      <viewAttribute id="detalNum">
+        <descriptions defaultDescription="detalNum"/>
+      </viewAttribute>
+      <viewAttribute id="height">
+        <descriptions defaultDescription="height"/>
+      </viewAttribute>
+      <viewAttribute id="step">
+        <descriptions defaultDescription="step"/>
+      </viewAttribute>
+      <viewAttribute id="kone">
+        <descriptions defaultDescription="kone"/>
+      </viewAttribute>
+      <viewAttribute id="angel">
+        <descriptions defaultDescription="angel"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="uiFameworksJs.dbUiFrameworks::tables.firstDbTable">
+      <mapping xsi:type="Calculation:AttributeMapping" target="state" source="state"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="detalNum" source="detalNum"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="height" source="height"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="step" source="step"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="kone" source="kone"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="angel" source="angel"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="state">
+        <descriptions defaultDescription="state"/>
+      </viewAttribute>
+      <viewAttribute id="substate">
+        <descriptions defaultDescription="substate"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="uiFameworksJs.dbUiFrameworks::tables.secondDbTable">
+      <mapping xsi:type="Calculation:AttributeMapping" target="state" source="state"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="substate" source="substate"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="state">
+        <descriptions defaultDescription="state"/>
+      </viewAttribute>
+      <viewAttribute id="detalNum">
+        <descriptions defaultDescription="detalNum"/>
+      </viewAttribute>
+      <viewAttribute id="height">
+        <descriptions defaultDescription="height"/>
+      </viewAttribute>
+      <viewAttribute id="step">
+        <descriptions defaultDescription="step"/>
+      </viewAttribute>
+      <viewAttribute id="kone">
+        <descriptions defaultDescription="kone"/>
+      </viewAttribute>
+      <viewAttribute id="angel">
+        <descriptions defaultDescription="angel"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="state" source="state"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="detalNum" source="detalNum"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="height" source="height"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="step" source="step"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="kone" source="kone"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="angel" source="angel"/>
+    </input>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="state" source="state"/>
+    </input>
+    <joinAttribute name="state"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="state" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="state"/>
+      <keyMapping columnObjectName="Join_1" columnName="state"/>
+    </attribute>
+    <attribute id="detalNum" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="detalNum"/>
+      <keyMapping columnObjectName="Join_1" columnName="detalNum"/>
+    </attribute>
+    <attribute id="height" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="height"/>
+      <keyMapping columnObjectName="Join_1" columnName="height"/>
+    </attribute>
+    <attribute id="step" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="step"/>
+      <keyMapping columnObjectName="Join_1" columnName="step"/>
+    </attribute>
+    <attribute id="kone" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="kone"/>
+      <keyMapping columnObjectName="Join_1" columnName="kone"/>
+    </attribute>
+    <attribute id="angel" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="angel"/>
+      <keyMapping columnObjectName="Join_1" columnName="angel"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="100" y="105"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-67" y="355"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="250" y="300"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="193"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

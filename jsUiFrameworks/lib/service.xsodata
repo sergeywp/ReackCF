@@ -1,0 +1,3 @@
+service {
+	"uiFameworksJs.dbUiFrameworks::dataCiew" as "dataService" keys generate local "id";
+}
